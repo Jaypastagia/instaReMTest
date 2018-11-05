@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/jquery.dataTables.min.css">
+    <title>
+        <%= title %>
+    </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+</head>
+
+<body ng-app="employeeApp" ng-controller="employeeCtrl">
+    <!-- <h1>Jay Pastagia</h1>
+    <p>Test for Mean - Stack developer</p>
+ -->
+    <h3 class="font-weight-bold text-center">Employee Signup</h3>
+
+    <div class="row">
+        <label class="control-label col-md-5 italic">
+			<i style="margin-left:15px">
+				Fields marked with a   <span class="required"> * </span>  are mandatory </i>
+		</label>
+    </div>
+    <form class="form-horizontal" name="employeeForm" ng-submit="submitForm(employeeForm)" novalidate>
+        <div class="form-group" ng-class="{ 'has-error' : employeeForm.name.$invalid && !employeeForm.name.$pristine }">
+            <label class="control-label col-sm-2" for="name">Name
+								<span class="required"> * </span>
+							</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="name" id="name" placeholder="Enter name" ng-model="employee.name" required>
+                <p ng-show="employeeForm.name.$invalid && !employeeForm.name.$pristine" class="help-block">Name is required.</p>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : (employeeForm.email.$invalid && !employeeForm.email.$pristine)||emailExist }">
+            <label class="control-label col-sm-2" for="email">Email
+								<span class="required"> * </span>
+							</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" ng-change="checkemail()" name="email" id="email" placeholder="Enter email" ng-model="employee.email" required>
+                <p ng-show="employeeForm.email.$invalid && !employeeForm.email.$pristine" class="help-block">Enter a valid email.</p>
+                <span class="help-block ng-hide" ng-show="emailExist">Email already registered.</span>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : employeeForm.password.$invalid && !employeeForm.password.$pristine }">
+            <label class="control-label col-sm-2" for="email">Password
+								<span class="required"> * </span>
+							</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" name="password" id="password" placeholder="Enter password" ng-model="employee.password" required>
+                <p ng-show="employeeForm.password.$invalid && !employeeForm.password.$pristine" class="help-block">Please enter password.</p>
+            </div>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-error' : employeeForm.contact.$invalid && !employeeForm.contact.$pristine }">
+            <label class="control-label col-sm-2" for="contact">Contact number
+								<span class="required"> * </span>
+							</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="contact" id="contact" placeholder="Enter contact no" ng-model="employee.contact" ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/" required>
+                <p ng-show="employeeForm.contact.$invalid && !employeeForm.contact.$pristine" class="help-block">Enter valid 10 digit contact number.</p>
+            </div>
+
+
+        </div>
+        <div class="form-group">
+
+            <div class="col-sm-offset-2 col-sm-10 ">
+                <button type="submit" class="btn btn-success center" ng-disabled="employeeForm.$invalid || emailExist">Sign up
+				</button>
+            </div>
+            <div class="col-sm-offset-2 col-sm-10">
+                <a href="/login">Login</a>
+            </div>
+        </div>
+    </form>
+    <!-- <table class="table table-striped table-bordered table-hover" id="emplist">
+        <thead>
+            <tr>
+                <th> Name</th>
+                <th> Email</th>
+                <th> Contact</th>
+            </tr>
+        </thead>
+    </table> -->
+</body>
+
+</html>
+<script src="/javascripts/jquery.min.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
+<script src="/javascripts/angular.js"></script>
+<script src="/javascripts/jquery.dataTables.min.js"></script>
+<script src="/javascripts/employeeCtrl.js"></script>

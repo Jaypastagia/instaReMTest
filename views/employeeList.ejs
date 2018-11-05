@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <!--     <link rel="stylesheet" href="/stylesheets/jquery.dataTables.min.css"> -->
+    <link rel="stylesheet" href="/javascripts/DataTables/media/css/DT_bootstrap.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>
+        <%= title %>
+    </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+</head>
+
+<body ng-app="employeeApp" ng-controller="employeeListCtrl">
+    <!-- <h1>Jay Pastagia</h1>
+    <p>Test for Mean - Stack developer</p>
+ -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/employee/home">Home</a></li>
+                <li><a href="/employee/profile">Profile</a></li>
+            </ul>
+        </div>
+    </nav>
+    <table class="table table-striped table-bordered table-hover" id="emplist">
+        <thead>
+            <tr>
+                <th> Name</th>
+                <th> Email</th>
+                <th> Contact</th>
+            </tr>
+        </thead>
+    </table>
+</body>
+
+</html>
+<script src="/javascripts/jquery.min.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
+
+<script src="/javascripts/angular.js"></script>
+<script type="text/javascript" src="/javascripts/DataTables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/javascripts/DataTables/js/DT_bootstrap.js"></script>
+<script type="text/javascript" src="/javascripts/DataTables/js/jquery.dataTables.refresh.js"></script>
+<script src="/javascripts/employeeCtrl.js"></script>
